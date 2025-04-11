@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'package:qr/constants/api.dart';
 import '../models/models.dart';
 
 class WeatherServices {
@@ -9,7 +10,7 @@ class WeatherServices {
   getWeather(String city) async {
     var response = await http.get(
       Uri.parse(
-          'http://api.openweathermap.org/data/2.5/weather?q=$city&appid=a463d68284691b03bcb490d0b5e38e6c&unit=metric'),
+          'http://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&unit=metric'),
     );
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
